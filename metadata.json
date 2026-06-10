@@ -1,0 +1,6 @@
+{
+  "name": "Hệ thống Đánh giá An toàn Thông tin Cán bộ Xã Phường",
+  "description": "Ứng dụng đánh giá và nâng cao nhận thức bám sát chuyên đề An toàn và Bảo mật thông tin trên nền tảng số dành cho cán bộ, công chức cấp xã, phường.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

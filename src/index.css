@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Global Font Size Enhancements for Cán bộ, Công chức */
+html {
+  font-size: 17px !important; /* Root font size set to exactly 17px */
+}
+
+body {
+  font-size: 17px !important; /* Base layout at 17px */
+  line-height: 1.6;
+}
+
+/* Ensure common tags respect the base size */
+p, td, li, select, textarea, input, label {
+  font-size: 17px;
+}
+
+/* Custom scaling for utility classes to align seamlessly with 17px base size */
+.text-xs {
+  font-size: 13.5px !important; /* Scaled down slightly */
+}
+.text-[11px] {
+  font-size: 12px !important; /* Scaled down slightly for fine print */
+}
+.text-sm {
+  font-size: 15.5px !important; /* Scaled moderately */
+}
+.text-base {
+  font-size: 17px !important; /* Exactly 17px */
+}
+.text-lg {
+  font-size: 20px !important;
+}
+.text-xl {
+  font-size: 23px !important;
+}
+.text-2xl {
+  font-size: 27px !important;
+}
+.text-3xl {
+  font-size: 34px !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.6);
+}
+
+/* Animations classes */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
+
+.ring-glow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  border: 2px solid var(--color-blue-500);
+  animation: pulse-ring 2s infinite ease-out;
+}
+
