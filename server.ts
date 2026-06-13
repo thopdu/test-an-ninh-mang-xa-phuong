@@ -9,6 +9,10 @@ import { createServer as createViteServer } from "vite";
 import { DBManager, DIRECTORY_DEPARTMENTS } from "./src/db/dbManager";
 import { GoogleGenAI, Type } from "@google/genai";
 import { Question, ScenarioQuestion, ExamAttempt } from "./src/types";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Initialize database
 DBManager.init();
