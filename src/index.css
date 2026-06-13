@@ -6,45 +6,55 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
-/* Global Font Size Enhancements for Cán bộ, Công chức */
+/* Responsive Root Font Size for Cán bộ, Công chức */
 html {
-  font-size: 17px !important; /* Root font size set to exactly 17px */
+  font-size: 14.5px !important; /* Mobile default */
+}
+@media (min-width: 640px) {
+  html {
+    font-size: 15.5px !important; /* Tablet */
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 17px !important; /* Desktop */
+  }
 }
 
 body {
-  font-size: 17px !important; /* Base layout at 17px */
+  font-size: 1rem !important; /* Let body inherit responsive root size */
   line-height: 1.6;
 }
 
-/* Ensure common tags respect the base size */
+/* Ensure common tags respect the base size from our responsive scaling */
 p, td, li, select, textarea, input, label {
-  font-size: 17px;
+  font-size: 1rem;
 }
 
-/* Custom scaling for utility classes to align seamlessly with 17px base size */
+/* Custom scaling for utility classes to respond dynamically using rems */
 .text-xs {
-  font-size: 13.5px !important; /* Scaled down slightly */
+  font-size: 0.8rem !important;
 }
 .text-\[11px\] {
-  font-size: 12px !important; /* Scaled down slightly for fine print */
+  font-size: 0.72rem !important;
 }
 .text-sm {
-  font-size: 15.5px !important; /* Scaled moderately */
+  font-size: 0.9rem !important;
 }
 .text-base {
-  font-size: 17px !important; /* Exactly 17px */
+  font-size: 1.0rem !important;
 }
 .text-lg {
-  font-size: 20px !important;
+  font-size: 1.15rem !important;
 }
 .text-xl {
-  font-size: 23px !important;
+  font-size: 1.35rem !important;
 }
 .text-2xl {
-  font-size: 27px !important;
+  font-size: 1.6rem !important;
 }
 .text-3xl {
-  font-size: 34px !important;
+  font-size: 2.0rem !important;
 }
 
 /* Custom Scrollbar */

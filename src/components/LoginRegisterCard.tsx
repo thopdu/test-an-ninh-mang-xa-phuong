@@ -171,27 +171,29 @@ export default function LoginRegisterCard({ onLoginSuccess }: LoginRegisterCardP
   return (
     <div className="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden" id="login-card-container">
       {/* Top Banner & Crest */}
-      <div className="bg-gradient-to-r from-blue-900 to-indigo-950 px-6 py-6 text-center text-white relative border-b border-indigo-900/35">
-        <div className="absolute top-3 right-3 bg-red-600/90 text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded text-white shadow-sm">
-          CHUYÊN ĐỀ 2 v2026
-        </div>
+      <div className="bg-gradient-to-r from-blue-900 to-indigo-950 px-6 py-8 text-center text-white relative border-b border-indigo-900/35">
         
-        {/* Government Gold Star Crest */}
-        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1.5 mx-auto mb-3.5 shadow-md">
-          <div className="w-full h-full border border-red-600 rounded-full flex items-center justify-center bg-red-600">
-            <span className="text-yellow-300 font-extrabold text-xl leading-none">★</span>
-          </div>
+        {/* Real Generated App Icon Card Top Crest */}
+        <div className="w-16 h-16 bg-white rounded-full overflow-hidden flex items-center justify-center p-1 mx-auto mb-4 shadow-lg border border-slate-200/40">
+          <img 
+            src="/src/assets/images/app_logo_1781355779193.jpg" 
+            alt="Logo" 
+            className="w-full h-full object-cover rounded-full"
+            referrerPolicy="no-referrer"
+          />
         </div>
 
-        <h2 className="text-xs font-black tracking-wider leading-snug uppercase text-amber-400">
+        <h2 className="text-[11.5px] font-extrabold tracking-wider leading-snug uppercase text-amber-400 select-all">
           Chương trình tập huấn kỹ năng công nghệ số
         </h2>
-        <h1 className="text-sm font-bold text-slate-100 font-sans mt-0.5 uppercase">
+        <h1 className="text-base sm:text-lg font-black text-white mt-1.5 uppercase tracking-tight leading-snug select-all">
           Khảo sát nhận thức An toàn thông tin mạng
         </h1>
-        <p className="text-[9px] text-blue-200 italic mt-1 font-medium bg-blue-950/50 py-0.5 px-2.5 rounded-full inline-block border border-blue-800/40 tracking-tight whitespace-nowrap">
-          Chương trình Quốc gia về Chuyển đổi số địa phương
-        </p>
+        <div className="mt-3">
+          <span className="text-[10px] text-blue-200 italic font-medium bg-blue-950/60 py-1 px-3.5 rounded-full inline-block border border-blue-800/40 tracking-normal leading-normal whitespace-normal max-w-full">
+            Chương trình Quốc gia về Chuyển đổi số địa phương
+          </span>
+        </div>
       </div>
 
       <div className="p-6">

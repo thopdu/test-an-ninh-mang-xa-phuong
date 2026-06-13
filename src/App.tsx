@@ -240,9 +240,9 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900 overflow-x-hidden" id="application-root">
       
       {/* Universal header for professional government branding */}
-      <header className="bg-blue-800 text-white p-6 flex justify-between items-center shadow-lg sticky top-0 z-40 print:hidden animate-fade-in" id="main-header">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-white rounded-full overflow-hidden flex items-center justify-center shadow-md border border-slate-200">
+      <header className="bg-blue-800 text-white p-4 sm:p-5 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center shadow-lg sticky top-0 z-40 print:hidden animate-fade-in gap-3" id="main-header">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-white rounded-full overflow-hidden flex items-center justify-center shadow-md border border-slate-200 shrink-0">
             <img 
               src="/src/assets/images/app_logo_1781355779193.jpg" 
               alt="Logo An toàn thông tin" 
@@ -251,25 +251,25 @@ export default function App() {
             />
           </div>
           <div>
-            <h1 className="text-lg md:text-xl font-black uppercase tracking-tight">
+            <h1 className="text-sm sm:text-base md:text-lg lg:text-xl font-black uppercase tracking-tight leading-tight">
               Trắc nghiệm kiến thức an toàn thông tin trên nền tảng số
             </h1>
-            <p className="text-blue-100 text-[11px] md:text-xs">
+            <p className="text-blue-105 text-[10px] sm:text-[11px] md:text-xs">
               Dành cho Cán bộ, Công chức cấp Xã/Phường
             </p>
           </div>
         </div>
 
         {user ? (
-          <div className="flex items-center gap-6">
-            <div className="text-right hidden sm:block">
-              <div className="text-sm font-bold tracking-tight">{user.fullName}</div>
+          <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-6 w-full sm:w-auto border-t border-blue-750/50 pt-2 sm:pt-0 sm:border-none">
+            <div className="text-left sm:text-right">
+              <div className="text-xs sm:text-sm font-bold tracking-tight">{user.fullName}</div>
               {isEditingHeaderDept ? (
-                <div className="flex items-center gap-1 mt-0.5 justify-end animate-fade-in">
+                <div className="flex items-center gap-1 mt-0.5 justify-start sm:justify-end animate-fade-in">
                   <select
                     value={selectedHeaderDept}
                     onChange={(e) => setSelectedHeaderDept(e.target.value)}
-                    className="text-[10px] px-1 py-0.5 bg-blue-900 border border-blue-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-blue-400 max-w-[150px] font-sans font-medium"
+                    className="text-[10px] px-1 py-0.5 bg-blue-900 border border-blue-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-blue-400 max-w-[120px] sm:max-w-[150px] font-sans font-medium"
                     disabled={updatingHeaderDept}
                   >
                     <option value="">-- Chọn đơn vị --</option>
@@ -297,14 +297,14 @@ export default function App() {
                   </button>
                 </div>
               ) : (
-                <div className="text-[11px] text-blue-200 font-medium flex items-center justify-end gap-1 mt-0.5 animate-fade-in">
+                <div className="text-[10px] sm:text-[11px] text-blue-200 font-medium flex items-center justify-start sm:justify-end gap-1 mt-0.5 animate-fade-in">
                   <span className="font-sans font-medium">Đơn vị: <strong className="text-white font-bold">{user.department}</strong></span>
                   <button
                     onClick={() => {
                       setSelectedHeaderDept(user.department);
                       setIsEditingHeaderDept(true);
                     }}
-                    className="text-yellow-400 hover:text-yellow-300 hover:underline inline-flex items-center gap-0.5 text-[10px] font-bold cursor-pointer ml-1 transition-colors"
+                    className="text-yellow-400 hover:text-yellow-300 hover:underline inline-flex items-center gap-0.5 text-[9px] sm:text-[10px] font-bold cursor-pointer ml-1 transition-colors"
                     title="Sửa thông tin đơn vị"
                   >
                     <Edit className="w-2.5 h-2.5 inline-block" /> Thay đổi
@@ -312,8 +312,8 @@ export default function App() {
                 </div>
               )}
             </div>
-            <div className="w-10 h-10 bg-blue-700 rounded-md border border-blue-600 flex items-center justify-center shadow-sm">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-700 rounded-md border border-blue-600 flex items-center justify-center shadow-sm shrink-0">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
               </svg>
             </div>
@@ -446,10 +446,6 @@ export default function App() {
       {/* Universal Footer Bar */}
       <footer className="bg-white border-t border-slate-200 px-8 py-4 flex flex-col sm:flex-row justify-between items-center text-[11px] text-slate-400 font-medium gap-2 print:hidden" id="main-footer">
         <div>Hệ thống Kiểm tra & Khảo sát Trực tuyến © 2026</div>
-        <div className="flex gap-4">
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping"></span> <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full absolute"></span> Máy chủ: Ổn định (Dịch vụ Công)</span>
-          <span>Phiên bản: 2.1.0-pro</span>
-        </div>
       </footer>
     </div>
   );
