@@ -189,11 +189,6 @@ export default function LoginRegisterCard({ onLoginSuccess }: LoginRegisterCardP
         <h1 className="text-base sm:text-lg font-black text-white mt-1.5 uppercase tracking-tight leading-snug select-all">
           Khảo sát nhận thức An toàn thông tin mạng
         </h1>
-        <div className="mt-3">
-          <span className="text-[10px] text-blue-200 italic font-medium bg-blue-950/60 py-1 px-3.5 rounded-full inline-block border border-blue-800/40 tracking-normal leading-normal whitespace-normal max-w-full">
-            Chương trình Quốc gia về Chuyển đổi số địa phương
-          </span>
-        </div>
       </div>
 
       <div className="p-6">
