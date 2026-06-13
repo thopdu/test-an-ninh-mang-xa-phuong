@@ -25,7 +25,7 @@ p, td, li, select, textarea, input, label {
 .text-xs {
   font-size: 13.5px !important; /* Scaled down slightly */
 }
-.text-[11px] {
+.text-\[11px\] {
   font-size: 12px !important; /* Scaled down slightly for fine print */
 }
 .text-sm {
