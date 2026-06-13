@@ -44,11 +44,15 @@ export default function ExamRoomView({
       } 
     };
   }>(() => {
+    const initialPartA: { [questionId: string]: string } = {};
+    questions.forEach(q => {
+      initialPartA[q.id] = '';
+    });
     const initialPartB: { [scenarioId: string]: any } = {};
     scenarios.forEach(s => {
       initialPartB[s.id] = { step1: '', step2: '', step3: '' };
     });
-    return { partA: {}, partB: initialPartB };
+    return { partA: initialPartA, partB: initialPartB };
   });
 
   // Anti-cheat & timing

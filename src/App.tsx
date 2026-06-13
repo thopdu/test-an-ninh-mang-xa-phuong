@@ -242,14 +242,17 @@ export default function App() {
       {/* Universal header for professional government branding */}
       <header className="bg-blue-800 text-white p-6 flex justify-between items-center shadow-lg sticky top-0 z-40 print:hidden animate-fade-in" id="main-header">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center p-2 shadow-inner">
-            <div className="w-full h-full border-2 border-red-600 rounded-full flex items-center justify-center animate-pulse">
-              <span className="text-red-600 font-extrabold text-xl">★</span>
-            </div>
+          <div className="w-12 h-12 bg-white rounded-full overflow-hidden flex items-center justify-center shadow-md border border-slate-200">
+            <img 
+              src="/src/assets/images/app_logo_1781355779193.jpg" 
+              alt="Logo An toàn thông tin" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div>
             <h1 className="text-lg md:text-xl font-black uppercase tracking-tight">
-              Hệ thống Kiểm tra An toàn Thông tin
+              Trắc nghiệm kiến thức an toàn thông tin trên nền tảng số
             </h1>
             <p className="text-blue-100 text-[11px] md:text-xs">
               Dành cho Cán bộ, Công chức cấp Xã/Phường

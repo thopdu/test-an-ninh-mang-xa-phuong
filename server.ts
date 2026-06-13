@@ -232,6 +232,16 @@ app.post("/api/exam/start", authenticate, (req: any, res) => {
     step3: { prompt: s.step3.prompt, choices: s.step3.choices }
   }));
 
+  const initialPartA: { [questionId: string]: string } = {};
+  clientQuestions.forEach(q => {
+    initialPartA[q.id] = "";
+  });
+
+  const initialPartB: { [scenarioId: string]: any } = {};
+  clientScenarios.forEach(s => {
+    initialPartB[s.id] = { step1: "", step2: "", step3: "" };
+  });
+
   const attemptNumber = oldAttempts.length + 1;
   const newAttempt: ExamAttempt = {
     id: "att_" + Math.random().toString(36).substring(2, 11),
@@ -246,8 +256,8 @@ app.post("/api/exam/start", authenticate, (req: any, res) => {
     ipAddress: req.ip || "127.0.0.1",
     cheatWarningsCount: 0,
     answers: {
-      partA: {},
-      partB: {}
+      partA: initialPartA,
+      partB: initialPartB
     }
   };
 
@@ -291,7 +301,22 @@ app.post("/api/exam/autosave", authenticate, (req: any, res) => {
     return;
   }
 
-  attempt.answers = answers || { partA: {}, partB: {} };
+  const submittedAnswers = answers || { partA: {}, partB: {} };
+  const mergedPartA = { ...attempt.answers.partA, ...submittedAnswers.partA };
+  const mergedPartB = { ...attempt.answers.partB };
+  if (submittedAnswers.partB) {
+    Object.keys(submittedAnswers.partB).forEach(sId => {
+      mergedPartB[sId] = {
+        step1: submittedAnswers.partB[sId]?.step1 || "",
+        step2: submittedAnswers.partB[sId]?.step2 || "",
+        step3: submittedAnswers.partB[sId]?.step3 || ""
+      };
+    });
+  }
+  attempt.answers = {
+    partA: mergedPartA,
+    partB: mergedPartB
+  };
   attempt.timeSpentSeconds = timeSpentSeconds || attempt.timeSpentSeconds;
   DBManager.saveAttempt(attempt);
 
@@ -345,8 +370,23 @@ app.post("/api/exam/submit", authenticate, (req: any, res) => {
     return;
   }
 
-  // Update final submitted answers
-  attempt.answers = answers || { partA: {}, partB: {} };
+  // Update final submitted answers with merge logic to preserve unanswered questions
+  const submittedAnswers = answers || { partA: {}, partB: {} };
+  const mergedPartA = { ...attempt.answers.partA, ...submittedAnswers.partA };
+  const mergedPartB = { ...attempt.answers.partB };
+  if (submittedAnswers.partB) {
+    Object.keys(submittedAnswers.partB).forEach(sId => {
+      mergedPartB[sId] = {
+        step1: submittedAnswers.partB[sId]?.step1 || "",
+        step2: submittedAnswers.partB[sId]?.step2 || "",
+        step3: submittedAnswers.partB[sId]?.step3 || ""
+      };
+    });
+  }
+  attempt.answers = {
+    partA: mergedPartA,
+    partB: mergedPartB
+  };
   attempt.timeSpentSeconds = timeSpentSeconds || attempt.timeSpentSeconds;
   attempt.completedAt = new Date().toISOString();
 

@@ -186,19 +186,19 @@ export default function ExamReviewView({
               
               <div className="flex items-center justify-between text-[10px]">
                 <span className="font-bold text-slate-400 font-mono">Câu {idx + 1}</span>
-                <span className={`font-bold px-2.5 py-0.5 rounded-full ${det.isCorrect ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
-                  {det.isCorrect ? '+3 điểm (Chính xác)' : '0 điểm (Chưa đúng)'}
+                <span className={`font-bold px-2.5 py-0.5 rounded-full ${det.isCorrect ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : (det.chosenAnswer === 'Không trả lời' || !det.chosenAnswer) ? 'bg-slate-100 text-slate-600 border border-slate-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+                  {det.isCorrect ? '+3 điểm (Chính xác)' : (det.chosenAnswer === 'Không trả lời' || !det.chosenAnswer) ? '0 điểm (Chưa làm)' : '0 điểm (Chưa đúng)'}
                 </span>
               </div>
 
-              <h4 className="text-[1rem] font-bold text-slate-800 leading-normal">
+              <h4 className="text-[1rem] font-bold text-slate-800 leading-normal font-sans">
                 {det.questionText}
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <div className={`p-3 rounded-xl border ${det.isCorrect ? 'bg-emerald-50/20 border-emerald-150' : (det.chosenAnswer === 'Không trả lời' || !det.chosenAnswer) ? 'bg-slate-50/50 border-slate-200' : 'bg-red-50/20 border-red-150'}`}>
                   <span className="text-[10px] text-slate-400 block font-normal">Lựa chọn của đồng chí:</span>
-                  <strong className={`block mt-1 font-sans ${det.isCorrect ? 'text-emerald-700' : 'text-red-700'}`}>
+                  <strong className={`block mt-1 font-sans ${det.isCorrect ? 'text-emerald-700' : (det.chosenAnswer === 'Không trả lời' || !det.chosenAnswer) ? 'text-slate-500 italic font-normal' : 'text-red-700'}`}>
                     {det.chosenAnswer}
                   </strong>
                 </div>
@@ -248,13 +248,13 @@ export default function ExamReviewView({
                 <div className="p-3.5 border border-slate-100 rounded-xl bg-slate-50/50 text-xs space-y-1">
                   <div className="flex items-center justify-between font-bold mb-1">
                     <span className="text-slate-700">Bước 1: Xác định nguy cơ bảo mật</span>
-                    <span className={det.step1.isCorrect ? 'text-emerald-700' : 'text-red-600'}>
-                      {det.step1.isCorrect ? '+3 điểm' : '0 điểm'}
+                    <span className={det.step1.isCorrect ? 'text-emerald-700' : (det.step1.chosen === 'Không trả lời' || !det.step1.chosen) ? 'text-slate-500' : 'text-red-600'}>
+                      {det.step1.isCorrect ? '+3 điểm' : (det.step1.chosen === 'Không trả lời' || !det.step1.chosen) ? '0 điểm (Chưa làm)' : '0 điểm'}
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-500 font-normal italic">{det.step1.prompt}</p>
                   <div className="flex flex-col sm:flex-row gap-1.5 pt-1.5 text-[11px]">
-                    <div className="flex-1">Đồng chí chọn: <strong className={det.step1.isCorrect ? 'text-emerald-700' : 'text-red-700'}>{det.step1.chosen}</strong></div>
+                    <div className="flex-1">Đồng chí chọn: <strong className={det.step1.isCorrect ? 'text-emerald-700' : (det.step1.chosen === 'Không trả lời' || !det.step1.chosen) ? 'text-slate-500 italic font-normal' : 'text-red-700'}>{det.step1.chosen}</strong></div>
                     <div className="flex-1 text-emerald-800 font-semibold">Đáp án đúng: {det.step1.correct}</div>
                   </div>
                 </div>
@@ -263,13 +263,13 @@ export default function ExamReviewView({
                 <div className="p-3.5 border border-slate-100 rounded-xl bg-slate-50/50 text-xs space-y-1">
                   <div className="flex items-center justify-between font-bold mb-1">
                     <span className="text-slate-700">Bước 2: Lựa chọn phương án xử lý</span>
-                    <span className={det.step2.isCorrect ? 'text-emerald-700' : 'text-red-600'}>
-                      {det.step2.isCorrect ? '+3 điểm' : '0 điểm'}
+                    <span className={det.step2.isCorrect ? 'text-emerald-700' : (det.step2.chosen === 'Không trả lời' || !det.step2.chosen) ? 'text-slate-500' : 'text-red-600'}>
+                      {det.step2.isCorrect ? '+3 điểm' : (det.step2.chosen === 'Không trả lời' || !det.step2.chosen) ? '0 điểm (Chưa làm)' : '0 điểm'}
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-500 font-normal italic">{det.step2.prompt}</p>
                   <div className="flex flex-col sm:flex-row gap-1.5 pt-1.5 text-[11px]">
-                    <div className="flex-1">Đồng chí chọn: <strong className={det.step2.isCorrect ? 'text-emerald-700' : 'text-red-700'}>{det.step2.chosen}</strong></div>
+                    <div className="flex-1">Đồng chí chọn: <strong className={det.step2.isCorrect ? 'text-emerald-700' : (det.step2.chosen === 'Không trả lời' || !det.step2.chosen) ? 'text-slate-500 italic font-normal' : 'text-red-700'}>{det.step2.chosen}</strong></div>
                     <div className="flex-1 text-emerald-800 font-semibold">Đáp án đúng: {det.step2.correct}</div>
                   </div>
                 </div>
@@ -278,13 +278,13 @@ export default function ExamReviewView({
                 <div className="p-3.5 border border-slate-100 rounded-xl bg-slate-50/50 text-xs space-y-1">
                   <div className="flex items-center justify-between font-bold mb-1">
                     <span className="text-slate-700">Bước 3: Giải thích lý thuyết lý do xử trí</span>
-                    <span className={det.step3.isCorrect ? 'text-emerald-700' : 'text-red-600'}>
-                      {det.step3.isCorrect ? '+2 điểm' : '0 điểm'}
+                    <span className={det.step3.isCorrect ? 'text-emerald-700' : (det.step3.chosen === 'Không trả lời' || !det.step3.chosen) ? 'text-slate-500' : 'text-red-600'}>
+                      {det.step3.isCorrect ? '+2 điểm' : (det.step3.chosen === 'Không trả lời' || !det.step3.chosen) ? '0 điểm (Chưa làm)' : '0 điểm'}
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-500 font-normal italic">{det.step3.prompt}</p>
                   <div className="flex flex-col sm:flex-row gap-1.5 pt-1.5 text-[11px]">
-                    <div className="flex-1">Đồng chí chọn: <strong className={det.step3.isCorrect ? 'text-emerald-700' : 'text-red-700'}>{det.step3.chosen}</strong></div>
+                    <div className="flex-1">Đồng chí chọn: <strong className={det.step3.isCorrect ? 'text-emerald-700' : (det.step3.chosen === 'Không trả lời' || !det.step3.chosen) ? 'text-slate-500 italic font-normal' : 'text-red-700'}>{det.step3.chosen}</strong></div>
                     <div className="flex-1 text-emerald-800 font-semibold">Đáp án đúng: {det.step3.correct}</div>
                   </div>
                 </div>
